@@ -4,6 +4,11 @@
 #include <morecolors>
 #include <freeday>
 
+#undef REQUIRE_PLUGIN
+#include <updater>
+
+#define UPDATE_URL    "http://bitbucket.toastdev.de/sourcemod-plugins/Refuse.txt"
+
 public Plugin:myinfo = 
 {
 	name = "Refuse 2.0",
@@ -51,6 +56,18 @@ public OnPluginStart()
 	LoadTranslations("refuse.phrases");
 	
 	CurrentlyRefusing = 0;
+	
+	if (LibraryExists("updater"))
+    {
+        Updater_AddPlugin(UPDATE_URL);
+    }
+}
+public OnLibraryAdded(const String:name[])
+{
+    if (StrEqual(name, "updater"))
+    {
+        Updater_AddPlugin(UPDATE_URL)
+    }
 }
 public ConVarChanged(Handle:cvar, const String:oldValue[], const String:newValue[]) {
 	
