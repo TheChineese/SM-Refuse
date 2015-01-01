@@ -1,5 +1,5 @@
 #include <sourcemod>
-#include <morecolors>
+#include <multicolors>
 #include <freeday>
 
 #undef REQUIRE_PLUGIN
@@ -12,7 +12,7 @@ public Plugin:myinfo =
 	name = "Refuse 2.0",
 	author = "Toast",
 	description = "A new refuse plugin for Jail",
-	version = "1.0",
+	version = "1.0.1",
 	url = "toastdev.de"
 }
 new Handle:c_RefuseTime;
