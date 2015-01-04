@@ -1,23 +1,24 @@
 #include <sourcemod>
 #include <multicolors>
-#include <freeday>
 
 #undef REQUIRE_PLUGIN
 #include <updater>
+#include <freeday>
 
-#define UPDATE_URL    "http://bitbucket.toastdev.de/sourcemod-plugins/raw/a18e60cec31c4d60960f3426d6b3af3481d0169d/Refuse.txt"
+#define UPDATE_URL    "http://bitbucket.toastdev.de/sourcemod-plugins/raw/master/Refuse.txt"
 
 public Plugin:myinfo = 
 {
 	name = "Refuse 2.0",
 	author = "Toast",
 	description = "A new refuse plugin for Jail",
-	version = "1.0.1",
-	url = "toastdev.de"
+	version = "1.0.2",
+	url = "bitbucket.toastdev.de"
 }
 new Handle:c_RefuseTime;
 new Handle:c_RefuseAmount;
 new Float:RefuseTime_Float;
+new bool:plugin_freeday = false;
 new RefuseAmount;
 new RefuseTime;
 new MaxRefuse[MAXPLAYERS + 1];
@@ -26,17 +27,25 @@ new CurrentlyRefusing;
 new Refusing[MAXPLAYERS + 1];
 new RefuseQuestioner;
 
+public APLRes:AskPluginLoad2(Handle:myself, bool:late, String:error[], err_max)
+{
+	MarkNativeAsOptional("SetFreeday");
+	MarkNativeAsOptional("HasFreeday");
+	MarkNativeAsOptional("Updater_AddPlugin");
+	return APLRes_Success;
+}
+
 public OnPluginStart()
 {
 	HookEvent("player_spawn", PlayerSpawn);
 	HookEvent("player_disconnect", PlayerDissconnect);
 	HookEvent("player_activate", PlayerJoin);
 	
-	CreateConVar("refuse_version", "1.0", "The current version of the plugin");
 	c_RefuseTime = CreateConVar("refuse_time", "4.0", "The time Terrorists can refuse");
 	c_RefuseAmount = CreateConVar("refuse_amount", "1.0", "How often Terrorists can refuse by Default");
 	HookConVarChange(c_RefuseTime, ConVarChanged);
 	HookConVarChange(c_RefuseAmount, ConVarChanged);
+	AutoExecConfig();
 	c_RefuseTime = FindConVar("refuse_time");
 	c_RefuseAmount = FindConVar("refuse_amount");
 	
@@ -59,12 +68,27 @@ public OnPluginStart()
     {
         Updater_AddPlugin(UPDATE_URL);
     }
+	if (LibraryExists("freeday"))
+    {
+        plugin_freeday = true;
+    }
 }
 public OnLibraryAdded(const String:name[])
 {
     if (StrEqual(name, "updater"))
     {
         Updater_AddPlugin(UPDATE_URL)
+    }
+    if (StrEqual(name, "freeday"))
+    {
+        plugin_freeday = true;
+    }
+}
+public OnLibraryRemoved(const String:name[])
+{
+	if (StrEqual(name, "freeday"))
+    {
+        plugin_freeday = false;
     }
 }
 public ConVarChanged(Handle:cvar, const String:oldValue[], const String:newValue[]) {
@@ -127,25 +151,40 @@ public Action:RefuseCommandHandler(client, args)
 	if(Team == 3){
 		if(IsPlayerAlive(client)){
 			if(CurrentlyRefusing == 0){
-				
+				new bool:all_refused = true;
+
+				for (new i = 1; i <= MaxClients; i++)
+				{
+					if(IsClientInGame(i))
+					{
+						if(IsPlayerAlive(i) && GetClientTeam(i) == 2 && MaxRefuse[i] <= CurrentRefuseAmount[i]){
+							all_refused = false;
+						}
+					}
+
+				}
+				if(all_refused){
+					CReplyToCommand(client, "%t %t", "prefix", "error_all_refused");
+					return;
+				}
+
 				RefuseQuestion(client);
 				
-				return;
-				
+				return;	
 			}
 			else{
-				CPrintToChat(client,"%t %t", "prefix", "error_already_refusing");
+				CReplyToCommand(client,"%t %t", "prefix", "error_already_refusing");
 				return;
 			}
 		}
 		else{
-			CPrintToChat(client,"%t %t", "prefix", "error_dead");
+			CReplyToCommand(client,"%t %t", "prefix", "error_dead");
 			return;
 		}
 	}
 	else{
 		
-		CPrintToChat(client,"%t %t", "prefix", "error_team_wrong");
+		CReplyToCommand(client,"%t %t", "prefix", "error_team_wrong");
 		return;
 		
 	}
@@ -241,10 +280,17 @@ public RefuseAwnserMenuHandler(Handle:menu, MenuAction:action, client, param2)
 
 MarkRefuser(client)
 {
-	if(!HasFreeday(client)){
+	if(plugin_freeday){
+		if(!HasFreeday(client)){
+			SetEntityRenderMode(client,RENDER_TRANSCOLOR);
+			SetEntityRenderColor(client, 0, 0, 255, 255);
+		}
+	}
+	else{
 		SetEntityRenderMode(client,RENDER_TRANSCOLOR);
 		SetEntityRenderColor(client, 0, 0, 255, 255);
 	}
+	
 	
 }
 UnmarkRefuser(client)
