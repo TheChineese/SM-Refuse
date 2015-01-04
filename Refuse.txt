@@ -1,0 +1,22 @@
+"Updater"
+{
+	"Information"
+	{
+		"Version"
+		{
+			"Latest"	"1.0.2"
+		}
+		
+		"Notes"	"Changelog:"
+		"Notes"	"Fixed dependencie Bug"
+	}
+	
+	"Files"
+	{
+		"Plugin"	"Path_SM/plugins/Refuse.smx"
+		"Plugin"	"Path_SM/translations/refuse.phrases.txt"
+		"Plugin"	"Path_SM/translations/de/refuse.phrases.txt"
+		
+		"Source"	"Path_SM/scripting/Refuse.sp"
+	}
+}
