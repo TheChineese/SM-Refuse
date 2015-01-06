@@ -12,7 +12,7 @@ public Plugin:myinfo =
 	name = "Refuse 2.0",
 	author = "Toast",
 	description = "A new refuse plugin for Jail",
-	version = "1.0.2",
+	version = "1.0.3",
 	url = "bitbucket.toastdev.de"
 }
 new Handle:c_RefuseTime;
@@ -281,7 +281,7 @@ public RefuseAwnserMenuHandler(Handle:menu, MenuAction:action, client, param2)
 MarkRefuser(client)
 {
 	if(plugin_freeday){
-		if(!HasFreeday(client)){
+		if(!FREEDAY_HasFreeday(client)){
 			SetEntityRenderMode(client,RENDER_TRANSCOLOR);
 			SetEntityRenderColor(client, 0, 0, 255, 255);
 		}
@@ -295,7 +295,7 @@ MarkRefuser(client)
 }
 UnmarkRefuser(client)
 {
-	if(!HasFreeday(client)){
+	if(!FREEDAY_HasFreeday(client)){
 		SetEntityRenderMode(client,RENDER_TRANSCOLOR);
 		SetEntityRenderColor(client, 255, 255, 255, 255);
 	}
