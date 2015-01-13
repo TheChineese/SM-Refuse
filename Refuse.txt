@@ -4,11 +4,11 @@
 	{
 		"Version"
 		{
-			"Latest"	"1.0.3"
+			"Latest"	"1.0.4"
 		}
 		
 		"Notes"	"Changelog:"
-		"Notes"	"New Native Name"
+		"Notes"	"Fixed a dependencie bug"
 	}
 	
 	"Files"
