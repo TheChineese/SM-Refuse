@@ -12,7 +12,7 @@ public Plugin:myinfo =
 	name = "Refuse 2.0",
 	author = "Toast",
 	description = "A new refuse plugin for Jail",
-	version = "1.0.3",
+	version = "1.0.4",
 	url = "bitbucket.toastdev.de"
 }
 new Handle:c_RefuseTime;
@@ -29,8 +29,8 @@ new RefuseQuestioner;
 
 public APLRes:AskPluginLoad2(Handle:myself, bool:late, String:error[], err_max)
 {
-	MarkNativeAsOptional("SetFreeday");
-	MarkNativeAsOptional("HasFreeday");
+	MarkNativeAsOptional("FREEDAY_SetFreeday");
+	MarkNativeAsOptional("FREEDAY_HasFreeday");
 	MarkNativeAsOptional("Updater_AddPlugin");
 	return APLRes_Success;
 }
