@@ -157,7 +157,7 @@ public Action:RefuseCommandHandler(client, args)
 				{
 					if(IsClientInGame(i))
 					{
-						if(IsPlayerAlive(i) && GetClientTeam(i) == 2 && MaxRefuse[i] <= CurrentRefuseAmount[i]){
+						if(IsPlayerAlive(i) && GetClientTeam(i) == 2 && CurrentRefuseAmount[i] < MaxRefuse[i]){
 							all_refused = false;
 						}
 					}
