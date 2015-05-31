@@ -1,0 +1,65 @@
+﻿"Phrases"
+{
+	"prefix"
+	{
+		"en"		"{fullred}[Refuse] "
+		"de"		"{fullred}[Verweigern] "
+	}
+	"error_all_refused"
+	{
+		"en"		"{lavender}All terrorists have already refused!"
+		"de"		"{lavender}Es haben bereits alle Terroristen verweigert!"
+	}
+	"error_already_refusing"
+	{
+		"en"		"{lavender}Somone already asked for refusing!"
+		"de"		"{lavender}Es hat bereits jemand nach Verweigerungen gefragt!"
+	}
+	"error_dead"
+	{
+		"en"		"{lavender}Dead players can't ask for refuse!"
+		"de"		"{lavender}Tote Spieler können nicht nach Verweigerung fragen!"
+	}
+	"error_team_wrong"
+	{
+		"en"		"{lavender}You are in the wrong team!"
+		"de"		"{lavender}Du bist im falschen Team!"
+	}
+	"RefuseQuestionMenuTitle"
+	{
+		"en"		"Do you want to refuse?"
+		"de"		"Möchtest du Verweigern?"
+	}
+	"Refuse"
+	{
+		"en"		"Yes"
+		"de"		"Natürlich! Ich bin feige!"
+	}
+	"NoRefuse"
+	{
+		"en"		"No"
+		"de"		"Nein! Ich bin mutig!"
+	}
+	"RefuseAwnserMenuTitle"
+	{
+		"en"		"Players that have refused:"
+		"de"		"Spieler die verweigert haben:"
+	}
+	"StopRefusing"
+	{
+		"en"		"{lavender}Refusing stopped!"
+		"de"		"{lavender}Verweigern beendet!"
+	}
+	"StartRefusing"
+	{
+		"#format"	"{1:i}"
+		"en"		"{lavender}Terrorists can refuse now for: {1} seconds!"
+		"de"		"{lavender}Terroristen können nun für {1} Sekunden verweigern!"
+	}
+	"player_refused"
+	{
+		"#format"	"{1:s}"
+		"en"		"{blue}{1} {lavender}refused the Game!"
+		"de"		"{blue}{1} {lavender}hat das Spiel verweigert!"
+	}
+}
