@@ -4,62 +4,74 @@
 	{
 		"en"		"{fullred}[Refuse] "
 		"de"		"{fullred}[Verweigern] "
+		"ru"		"{fullred}[Отказ] "
 	}
 	"error_all_refused"
 	{
 		"en"		"{lavender}All terrorists have already refused!"
 		"de"		"{lavender}Es haben bereits alle Terroristen verweigert!"
+		"ru"		"{lavender}Все террористы уже отказались!"
 	}
 	"error_already_refusing"
 	{
-		"en"		"{lavender}Somone already asked for refusing!"
+		"en"		"{lavender}Someone already asked for refusing!"
 		"de"		"{lavender}Es hat bereits jemand nach Verweigerungen gefragt!"
+		"ru"		"{lavender}Кто-то уже просил отказать!"
 	}
 	"error_dead"
 	{
 		"en"		"{lavender}Dead players can't ask for refuse!"
 		"de"		"{lavender}Tote Spieler können nicht nach Verweigerung fragen!"
+		"ru"		"{lavender}Мёртвые игроки не могут просить отказа!"
 	}
 	"error_team_wrong"
 	{
 		"en"		"{lavender}You are in the wrong team!"
 		"de"		"{lavender}Du bist im falschen Team!"
+		"ru"		"{lavender}Вы не в той команде!"
 	}
 	"RefuseQuestionMenuTitle"
 	{
 		"en"		"Do you want to refuse?"
 		"de"		"Möchtest du Verweigern?"
+		"ru"		"Вы хотите отказаться?"
 	}
 	"Refuse"
 	{
 		"en"		"Yes"
 		"de"		"Natürlich! Ich bin feige!"
+		"ru"		"Да"
 	}
 	"NoRefuse"
 	{
 		"en"		"No"
 		"de"		"Nein! Ich bin mutig!"
+		"ru"		"Нет"
 	}
 	"RefuseAwnserMenuTitle"
 	{
 		"en"		"Players that have refused:"
 		"de"		"Spieler die verweigert haben:"
+		"ru"		"Игроки, которые отказались:"
 	}
 	"StopRefusing"
 	{
 		"en"		"{lavender}Refusing stopped!"
 		"de"		"{lavender}Verweigern beendet!"
+		"ru"		"{lavender}Отказ остановлен!"
 	}
 	"StartRefusing"
 	{
 		"#format"	"{1:i}"
 		"en"		"{lavender}Terrorists can refuse now for: {1} seconds!"
 		"de"		"{lavender}Terroristen können nun für {1} Sekunden verweigern!"
+		"ru"		"{lavender}Террористы могут отказаться сейчас за: {1} сек.!"
 	}
 	"player_refused"
 	{
 		"#format"	"{1:s}"
 		"en"		"{blue}{1} {lavender}refused the Game!"
 		"de"		"{blue}{1} {lavender}hat das Spiel verweigert!"
+		"ru"		"{blue}{1} {lavender}отказался от игры!"
 	}
 }
